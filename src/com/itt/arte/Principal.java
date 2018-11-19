@@ -80,7 +80,7 @@ public static char mostrarMenu() {
 
               System.out.println ("¿Qué opción deseas?");
 
-              opcion = lector.nextLine();
+              opcion = lector.next();
 
               return opcion.charAt(0); // Devuelvo el primer caracter tecleado.
 
