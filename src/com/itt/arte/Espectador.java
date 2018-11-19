@@ -8,9 +8,9 @@ public class Espectador {
 	private hola20000;
 	private hola239032023;
 	//prueba holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaafdasfdsfdfsa
-
-	// HOla
+asdfadsfasdfasd
+	// HOlafadsafsdasdfasdfads
 	
 	// HOla hola hola
-
+fasdadfsdsfsadassdfasdfafddsaf
 }
