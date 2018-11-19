@@ -13,4 +13,12 @@ asdfadsfasdfasd
 	
 	// HOla hola hola
 fasdadfsdsfsadassdfasdfafddsaf
+
+
+
+ if(i==0) {
+	 return "Hola es 0";
+ }
+
+
 }
