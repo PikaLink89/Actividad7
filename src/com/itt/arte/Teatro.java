@@ -82,7 +82,18 @@ public class Teatro extends Local implements Sala {
 
 		@Override
 		public String cancelarLocalidad(int fila, int butaca) {
+								
 			
+			for (int i = 0; i<localidades.length; i++) {
+				for (int j = 0; j<localidades[i].length; j++) {
+					if (localidades[fila][butaca] != null) 
+						return "Ocupada";
+					else
+						localidades[fila][butaca] = null;						
+						return "Vacía";
+					}
+					
+				}
 		}
 
 		
