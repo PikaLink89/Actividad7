@@ -3,6 +3,7 @@ package com.itt.arte;
 public class Espectador {
 
 	//Propiedades de espectador
+	
 	private String nombre;
 	private String tlf;
 	private int edad;
@@ -43,6 +44,7 @@ public class Espectador {
 	}
 
 	//Métodos Object
+	
 	@Override
 	public String toString() {
 		return "Espectador [nombre=" + nombre + ", tlf=" + tlf + ", edad=" + edad + "]";
@@ -50,6 +52,7 @@ public class Espectador {
 	
 	
 	//Métodos propios de la clase
+	
 	public String rangoEdad() {
 		if (edad <= 12 || edad == 0) 
 			return "Tipo: INFANTIL";
