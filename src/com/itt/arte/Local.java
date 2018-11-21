@@ -1,6 +1,8 @@
 package com.itt.arte;
 
 public class Local {
+	
+	//Propiedades Local
 	private String domicilio;
 	private int metros, accesos;
 	
@@ -10,11 +12,8 @@ public class Local {
 		this.accesos = accesos;
 		}
 	
-	@Override
-	public String toString() {
-		return "Local [domicilio=" + domicilio + ", metros=" + metros + ", accesos=" + accesos + "]";
-	}
-
+		
+	//Getters & Setters
 	public String getDomicilio() {
 		return domicilio;
 	}
@@ -39,6 +38,12 @@ public class Local {
 		this.accesos = accesos;
 	}
 	
+	
+	//Métodos Object
+	@Override
+	public String toString() {
+		return "Local [domicilio=" + domicilio + ", metros=" + metros + ", accesos=" + accesos + "]";
+	}
 	
 	
 }

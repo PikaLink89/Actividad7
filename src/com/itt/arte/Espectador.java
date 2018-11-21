@@ -54,6 +54,7 @@ public class Espectador {
 	//Métodos propios de la clase
 	
 	public String rangoEdad() {
+		
 		if (edad <= 12 || edad == 0) 
 			return "Tipo: INFANTIL";
 			if (edad >= 13 && edad <= 17) 
