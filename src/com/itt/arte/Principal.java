@@ -48,7 +48,7 @@ public class Principal {
 
                               } while (opc!='8');
 
-                              lector.close();
+                            lector.close();
 
 }
 
