@@ -4,6 +4,9 @@ public class Local {
 	private String domicilio;
 	private int metros, accesos;
 	
+	public Local() {
+	}
+	
 	public Local (String domicilio, int metros, int accesos) {
 		this.domicilio = domicilio;
 		this.metros = metros;

@@ -2,14 +2,14 @@ package com.itt.arte;
 
 public interface Sala {
 	//Ver programacion
-	int VerProgramacion
+	/*int VerProgramacion
 		for (int i =0; i<matrizTeatro.length; i++) {
 			if(teatro.Equals(matrizteatro[i][1])) {
 					VerLocalidades = VerLocalidades+1;
 				}else {
 					LocalidadesOcupadas = LocalidadesOcupadas+1;
 				}	
-			}
+			}*/
 	String verProgramacion();
 		//system.out.println(teatro1.Programacion());
 	String verLocalidades();
