@@ -23,25 +23,36 @@ public class Teatro extends Local implements Sala  {
 		//System.out.println(Obra.consultar());
 		return null;
 	}
-
 	@Override
-	public String verLocalidades() {
-		for (int i=0; i<localidades.length ;i+=1) {
-			for (int j=0; j<localidades[i].length ;j+=1) {
-				if (localidades [i][j]!=null) 
-					System.out.println(i + "." + j + " ocupada\t");
-				else {
-					System.out.println(i + "." + j + "libre\t");
+	public void verLocalidades() {
+		for (int i = 0; i<localidades.length; i++) {
+			for (int d = 0; d<localidades[i].length; d++) {
+									
+				if (localidades[i][d] != null)  {
+					System.out.print(i+"."+d+" Ocupada ");
 				}
-			}
-			System.out.println(" ");
+				else {
+					System.out.print(i+"."+d+" Libre ");
+				}
+				
+				}
+			System.out.println("");
 		}
+		
 	}
+	
 	@Override
 	public void verLocalidadesOcupadas() {
-		
-		return null;
+		for (int i = 0; i<localidades.length; i++) {
+			for (int d = 0; d<localidades[i].length; d++) {
+				if (localidades[i][d] != null)  {
+					System.out.println(i+"."+d+" "+localidades[i][d].getNombre()+", tlf: "+localidades[i][d].getTlf()
+							+", Tipo: "+localidades[i][d].rangoEdad());
+				}
+			}
+		}
 	}
+
 
 	@Override
 	public String venderLocalidad(int fila, int butaca, Espectador e) {		
