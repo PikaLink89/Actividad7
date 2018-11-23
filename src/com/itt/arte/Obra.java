@@ -1,6 +1,6 @@
 package com.itt.arte;
 
-public class Obra extends Teatro {
+public class Obra  {
 	private String titulo , genero;
 	private int minutosDuracion;
 	
