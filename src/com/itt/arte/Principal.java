@@ -7,7 +7,6 @@ public class Principal {
 private static Scanner lector;
 private static Obra obra = new Obra("La cena de los idiotas", "Comedia", 95);
 private static Teatro teatro = new Teatro("C/ Sol, 45", 300, 2, obra, 30);
-
 	public static void main(String[] args) {
         lector = new Scanner(System.in);
         char opc;
@@ -42,7 +41,7 @@ private static Teatro teatro = new Teatro("C/ Sol, 45", 300, 2, obra, 30);
 						 *Se comprueba que la localidad elegida esta libre; 
 						 */	
 						if (teatro.consultarLocalidad(fila, butaca) == null) {
-							teatro.venderLocalidad(fila, butaca, e);
+							System.out.println(teatro.venderLocalidad(fila, butaca, e));							
 						} else {
 							System.out.println(teatro.consultarLocalidad(fila, butaca));							
 						}
