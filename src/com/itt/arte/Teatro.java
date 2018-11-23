@@ -14,12 +14,12 @@ public class Teatro extends Local implements Sala  {
         this.localidades = new Espectador[5][10]; 
 
 	}	
-	
 	//Para la interface
 
 	@Override
 	public String verProgramacion() {
-		
+		System.out.println(Obra.toString);
+		System.out.println(Obra.consultar());
 		return null;
 	}
 
@@ -48,14 +48,21 @@ public class Teatro extends Local implements Sala  {
 	public String cancelarLocalidad(int fila, int butaca) {
 		
 		return localidades[fila][butaca].getNombre() + " " + " ha cancelado la reserva";		
-		localidades[fila][butaca] = null;		
+		//localidades[fila][butaca] = null;		
 			
 	}
 
 	@Override
 	public String consultarLocalidad(int fila, int butaca) {
-		// TODO Auto-generated method stub
-		return null;
+		if (localidades [fila][butaca]!=null) {
+			this.localidades[fila][butaca]=localidades[fila][butaca];
+			double precioEspectador;
+			precioEspectador = (this.localidades[fila][butaca].getEdad()<=12)?this.precio*0.5:(this.localidades[fila][butaca].getEdad()<=17)?this.precio*0.20:(this.localidades[fila][butaca].getEdad()>=65)?this.precio*0.66:this.precio;	
+			
+			return "localidad ocupada por "+ localidades[fila][butaca].getNombre().toUpperCase() + ", tlf: " + localidades[fila][butaca].getTlf()
+					+ ", tipo: " + localidades[fila][butaca].rangoEdad() + ", precio: " + precioEspectador;				
+		}else {
+			return "localidad libre";}
 	}
 
 	@Override
