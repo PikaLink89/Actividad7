@@ -19,19 +19,19 @@ public class Teatro extends Local implements Sala  {
 
 	@Override
 	public String verProgramacion() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public String verLocalidades() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public String verLocalidadesOcupadas() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 

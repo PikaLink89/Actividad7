@@ -1,7 +1,7 @@
 package com.itt.arte;
 
 public interface Sala {
-		public abstract String verProgramcion();
+		public abstract String verProgramacion();
 		public abstract String verLocalidades();
 		public abstract String verLocalidadesOcupadas();
 		public abstract String venderLocalidad(int fila, int butaca, Espectador e);
