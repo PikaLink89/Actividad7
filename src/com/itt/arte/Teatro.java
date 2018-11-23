@@ -18,19 +18,27 @@ public class Teatro extends Local implements Sala  {
 
 	@Override
 	public String verProgramacion() {
-		System.out.println(Obra.toString);
-		System.out.println(Obra.consultar());
+		
+		//System.out.println(Obra.toString);
+		//System.out.println(Obra.consultar());
 		return null;
 	}
 
 	@Override
 	public String verLocalidades() {
-		
-		return null;
+		for (int i=0; i<localidades.length ;i+=1) {
+			for (int j=0; j<localidades[i].length ;j+=1) {
+				if (localidades [i][j]!=null) 
+					System.out.println(i + "." + j + " ocupada\t");
+				else {
+					System.out.println(i + "." + j + "libre\t");
+				}
+			}
+			System.out.println(" ");
+		}
 	}
-
 	@Override
-	public String verLocalidadesOcupadas() {
+	public void verLocalidadesOcupadas() {
 		
 		return null;
 	}
@@ -47,8 +55,13 @@ public class Teatro extends Local implements Sala  {
 	@Override
 	public String cancelarLocalidad(int fila, int butaca) {
 		
-		return localidades[fila][butaca].getNombre() + " " + " ha cancelado la reserva";		
-		//localidades[fila][butaca] = null;		
+		if(localidades[fila][butaca] == null)
+			return "La plaza ya estaba libre";
+		else {
+			String nombre = localidades[fila][butaca].getNombre();
+			localidades[fila][butaca] = null;
+			return nombre.toUpperCase() + " ha cancelado su reserva";
+		}
 			
 	}
 
