@@ -79,6 +79,12 @@ public class Teatro extends Local implements Sala  {
 		return "Se ha vendido la localidad " + fila + "." + butaca + " a " + e.getNombre() + " por " + precioEspectador + " euros.";		
 	}
 
+	/**
+	 * Metodo para calcular el precio de cada espectador según su edad
+	 * 
+	 * @param e -> Tipo Objeto Espectador
+	 * @return -> Tipo double con el precio los descuentos.
+	 */
 	private double precioEspectador(Espectador e) {
 		double precioEspectador;
 		precioEspectador = (e.getEdad()<=12)?this.precio*0.5:(e.getEdad()<=17)?this.precio*0.20:(e.getEdad()>=65)?this.precio*0.66:this.precio;
