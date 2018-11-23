@@ -7,7 +7,7 @@
  * String verProgramacion();
  * String verLocalidades();
  * String VerLocalidadesOcupadas();
- * Juan Antonio Pavón -> String VenderLocalidad(int fila, int butaca, Espectador e);
+ * Juan Antonio Pavón -> Método String VenderLocalidad(int fila, int butaca, Espectador e);
  * String candelarLocalidad(int fila, int butaca);
  * String consultarLocalidad(int fila, int butaca);
  * double calcularRecaudacion();    
