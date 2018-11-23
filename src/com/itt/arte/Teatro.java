@@ -79,7 +79,7 @@ public class Teatro extends Local implements Sala {
 		}
 		
 		
-
+		/*
 		@Override
 		public String cancelarLocalidad(int fila, int butaca) {
 			
@@ -87,7 +87,21 @@ public class Teatro extends Local implements Sala {
 			localidades[fila][butaca] = null;		
 				
 		}
+		*/
+		
 
+		@Override
+		public String cancelarLocalidad(int fila, int butaca) {
+			
+			if(localidades[fila][butaca] == null)
+				return "La plaza ya estaba libre";
+			else {
+				String nombre = localidades[fila][butaca].getNombre();
+				localidades[fila][butaca] = null;
+				return nombre.toUpperCase() + " ha cancelado su reserva";
+			}
+				
+		}
 		
 		
 		@Override
