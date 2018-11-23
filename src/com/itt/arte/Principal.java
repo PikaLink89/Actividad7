@@ -17,7 +17,36 @@ private static Teatro teatro = new Teatro("C/ Sol, 45", 300, 2, obra, 30);
 					case '1':
 					case '2':
 					case '3':
+					/*
+					 * Case 4
+					 * Autor Juan Antonio Pavón
+					 * 
+					 */	
 					case '4':
+						int fila, butaca, edad;
+						String nombre, tlf;
+						Espectador e;
+						System.out.println("¿En que fila quieres sentante (0-4)?");
+						fila = Integer.parseInt(lector.next());
+						System.out.println("Y en qué butaca (0-9)?");
+						butaca = Integer.parseInt(lector.next());
+						System.out.println("¿Cómo se llama?");
+						nombre = lector.next();
+						System.out.println("¿Cuál es su teléfono?");
+						tlf = lector.next();
+						System.out.println("¿Qué edad tiene?");
+						edad = Integer.parseInt(lector.next());	
+						e = new Espectador(nombre, tlf, edad);
+						
+						/*
+						 *Se comprueba que la localidad elegida esta libre; 
+						 */	
+						if (teatro.consultarLocalidad(fila, butaca) == null) {
+							teatro.venderLocalidad(fila, butaca, e);
+						} else {
+							System.out.println(teatro.consultarLocalidad(fila, butaca));							
+						}
+						
 					case '5':
 					case '6':
 					case '7':
