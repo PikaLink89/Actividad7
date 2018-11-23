@@ -34,7 +34,18 @@ public class Principal {
 
                                                        case '4':
 
-                                                       case '5':
+                                                       case '5': Cancelar localidad;
+                                                    	   System.out.println("Qué opción deseas?/n");
+                                                    	   lector.nextInt();
+                                                    	   System.out.println("¿Fila (0-4)?");
+                                                    	   lector.nextInt();
+                                                    	   System.out.println("¿Butaca (0-9)?");
+                                                    	   lector.nextInt();
+                                                    	   
+                                                    	   break;
+                                                    	   
+                                                    	   
+                                                    	  
 
                                                        case '6':
 
