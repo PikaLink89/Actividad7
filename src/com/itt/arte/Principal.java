@@ -1,8 +1,6 @@
 package com.itt.arte;
 import java.util.Scanner;
 
-import com.itt.arte.*;
-
 public class Principal {
 private static Scanner lector;
 private static Obra obra = new Obra("La cena de los idiotas", "Comedia", 95);
