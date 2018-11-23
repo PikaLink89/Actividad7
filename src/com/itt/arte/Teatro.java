@@ -38,7 +38,7 @@ public class Teatro extends Local implements Sala  {
 		super(domicilio, metros, accesos);
 		this.obra = obra;
 		this.precio = precio;
-        this.localidades = new Espectador[5][10];
+        this.localidades = new Espectador[5][10]; 
 
 	}	
 	

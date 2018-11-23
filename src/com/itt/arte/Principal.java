@@ -43,7 +43,7 @@ private static Teatro teatro = new Teatro("C/ Sol, 45", 300, 2, obra, 30);
 						if (teatro.consultarLocalidad(fila, butaca) == null) {
 							System.out.println(teatro.venderLocalidad(fila, butaca, e));							
 						} else {
-							System.out.println(teatro.consultarLocalidad(fila, butaca));							
+							System.out.println(teatro.consultarLocalidad(fila, butaca)); 							
 						}
 						
 					case '5':
