@@ -31,8 +31,36 @@ public class Principal {
                                                        case '2':
 
                                                        case '3':
-
+                                                    	   /*
+                                          					 * Case 4
+                                          					 * Autor Juan Antonio Pavón
+                                          					 * 
+                                          					 */	
                                                        case '4':
+                                                    	   int fila, butaca, edad;
+                                      						String nombre, tlf;
+                                   						Espectador e;						
+                                   						/*
+                                   						 *Se comprueba que la localidad elegida esta libre; 
+                                   						 */	
+                                   						do {
+                                   							System.out.println("¿En qué fila quieres sentante (0-4)?");
+                                   							fila = Integer.parseInt(lector.next());
+                                   							System.out.println("Y en qué butaca (0-9)?");
+                                   							butaca = Integer.parseInt(lector.next());
+                                   							teatro.consultarLocalidad(fila, butaca);
+                                   						}						
+                                   						while (teatro.consultarLocalidad(fila, butaca) != null);						
+                                   							//Si la localidad esta libre sigue el proceso
+                                   							System.out.println("¿Cómo se llama?");
+                                   							nombre = lector.next();
+                                   							System.out.println("¿Cuál es su teléfono?");
+                                   							tlf = lector.next();
+                                   							System.out.println("¿Qué edad tiene?");
+                                   							edad = Integer.parseInt(lector.next());	
+                                   							e = new Espectador(nombre, tlf, edad);
+                                   							//teatro.venderLocalidad(fila, butaca, e);
+                                   							System.out.println(teatro.venderLocalidad(fila, butaca, e));
 
                                                        case '5':
 
