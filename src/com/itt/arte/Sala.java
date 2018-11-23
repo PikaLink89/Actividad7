@@ -1,6 +1,6 @@
 package com.itt.arte;
 
-public abstract class Sala {
+public interface Sala {
 	public abstract String verProgramcion();
 	public abstract String verLocalidades();
 	public abstract String verLocalidadesOcupadas();
