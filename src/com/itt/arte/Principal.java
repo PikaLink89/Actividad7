@@ -24,11 +24,19 @@ private static Teatro teatro = new Teatro("C/ Sol, 45", 300, 2, obra, 30);
 					case '4':
 						int fila, butaca, edad;
 						String nombre, tlf;
-						Espectador e;
-						System.out.println("¿En que fila quieres sentante (0-4)?");
-						fila = Integer.parseInt(lector.next());
-						System.out.println("Y en qué butaca (0-9)?");
-						butaca = Integer.parseInt(lector.next());
+						Espectador e;						
+						/*
+						 *Se comprueba que la localidad elegida esta libre; 
+						 */	
+						do {
+							System.out.println("¿En qué fila quieres sentante (0-4)?");
+							fila = Integer.parseInt(lector.next());
+							System.out.println("Y en qué butaca (0-9)?");
+							butaca = Integer.parseInt(lector.next());
+							teatro.consultarLocalidad(fila, butaca);
+						}						
+						while (teatro.consultarLocalidad(fila, butaca) != null);						
+						//Si la localidad esta libre sigue el proceso
 						System.out.println("¿Cómo se llama?");
 						nombre = lector.next();
 						System.out.println("¿Cuál es su teléfono?");
@@ -36,16 +44,8 @@ private static Teatro teatro = new Teatro("C/ Sol, 45", 300, 2, obra, 30);
 						System.out.println("¿Qué edad tiene?");
 						edad = Integer.parseInt(lector.next());	
 						e = new Espectador(nombre, tlf, edad);
-						
-						/*
-						 *Se comprueba que la localidad elegida esta libre; 
-						 */	
-						if (teatro.consultarLocalidad(fila, butaca) == null) {
-							System.out.println(teatro.venderLocalidad(fila, butaca, e));							
-						} else {
-							System.out.println(teatro.consultarLocalidad(fila, butaca)); 							
-						}
-						
+						//teatro.venderLocalidad(fila, butaca, e);
+						System.out.println(teatro.venderLocalidad(fila, butaca, e));
 					case '5':
 					case '6':
 					case '7':
