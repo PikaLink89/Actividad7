@@ -15,45 +15,93 @@ public class Principal {
               private static Teatro teatro = new Teatro("C/ Sol, 45", 300, 2, obra, 30);
 
               public static void main(String[] args) {
-
+            	            	             	            	  
                             lector = new Scanner(System.in);
+                            
 
-                            char opc;
+
+                        char opc;
 
                             do {
 
                                          opc = mostrarMenu();
-
+                                         
                                          switch (opc) {
-
-                                                       case '1':
-
-                                                       case '2':
-
-                                                       case '3':
-
+                                         					//Se consulta programación
+                                         
+                                                       case '1': System.out.println(teatro.verProgramacion());
+                                                       			 break;
+                                                       			 
+                                                       		//Se ven todas las localidades
+                                                       case '2': teatro.verLocalidades();
+                                                                 break;
+                                                                 
+                                                            //Se muestran unicamente las ocupadas
+                                                                 
+                                                       case '3': teatro.verLocalidadesOcupadas();
+                                                       	 		 break;
+                                                       	 		 
+                                                       	 		 
+                                                       	 	//Se realiza una lectura para el método venderlocalidad
                                                        case '4':
+                                                    	   int fila = 0;
+                                                    	   int butaca = 0;
+                                                    	   Espectador e = new Espectador();
 
-                                                       case '5': Cancelar localidad;
-                                                    	   System.out.println("Qué opción deseas?\n");
-                                                    	   lector.nextInt();
-                                                    	   System.out.println("¿Fila (0-4)?");
-                                                    	   lector.nextInt();
-                                                    	   System.out.println("¿Butaca (0-9)?");
-                                                    	   lector.nextInt();
+                                                    	   System.out.print("¿En que fila quiere sentarse (0-4)? ");
+                                                    	   fila = lector.nextInt();
+
+                                                    	   System.out.print("¿Y en que butaca (0-9)? ");
+                                                    	   butaca = lector.nextInt();
+
+                                                    	   System.out.print("Nombre ");
+                                                    	  
+                                                    	   e.setNombre(lector.next());
+
+                                                    	   System.out.print("¿Su teléfono? ");
+                                                    	  
+                                                    	  e.setTlf(lector.next());
+
+                                                    	   System.out.print("¿Cuantos años años tiene? ");
                                                     	   
+                                                    	   e.setEdad(lector.nextInt());
+
+                                                    	   System.out.println(teatro.venderLocalidad(fila, butaca, e));
+                                                    	   break;
+                                               	  
+                                                    	   
+                                                       //Se realiza una lectura para el metodo cancelarlocalidad
+                                                       case '5':
+                                                    	   
+                                                    	   System.out.print("¿Fila (0-4)? ");
+                                                    	   fila = lector.nextInt();  
+
+                                                    	   System.out.print("¿Butaca (0-9)? ");
+                                                    	   butaca = lector.nextInt();
+                                                    	   System.out.print(teatro.cancelarLocalidad(fila, butaca));
+                                                    	   break;
+
+                                                    	   
+                                                    	   //Se hace una lecutra para consultarlocalidad
+                                                       case '6':
+                                                    	   
+                                                    	   System.out.print("¿Fila (0-4)? ");
+                                                    	   fila = lector.nextInt();  
+
+                                                    	   System.out.print("¿Butaca (0-9)? ");
+                                                    	   butaca = lector.nextInt();
+                                                    	   teatro.consultarLocalidad(fila, butaca);
                                                     	   break;
                                                     	   
                                                     	   
-                                                    	  
-
-                                                       case '6':
-
-                                                       case '7':
-
-                                                       case '8':
-
+                                                    	   //llama al método que calcular la recaudación
+                                                       case '7': System.out.println(teatro.calcularRecaudacion());
+                                                           break;
+                                                           
+                                                       case '8': System.out.println("Hasta pronto");
+                                                       	    break;
                                                        default:
+                                                    	   
 
                                           }
 
@@ -91,10 +139,12 @@ public static char mostrarMenu() {
 
               System.out.println ("¿Qué opción deseas?");
 
-              opcion = lector.nextLine();
+              opcion = lector.next();
 
               return opcion.charAt(0); // Devuelvo el primer caracter tecleado.
-
+             
            }
+
+	
 
 }
