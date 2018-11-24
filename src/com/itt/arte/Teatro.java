@@ -16,13 +16,14 @@ public class Teatro extends Local implements Sala  {
 	}	
 	//Para la interface
 
-	@Override
 	public String verProgramacion() {
-		
-		//System.out.println(Obra.toString);
-		//System.out.println(Obra.consultar());
-		return null;
+	
+		return "Hoy representamos "+ getObra().getTitulo() 
+				+ ", género: "+getObra().getGenero() + ", Duracción: "
+				+ getObra().getMinutosDuracion() + "\n En "+ getDomicilio() 
+				+ ", Local de " +getMetros() + " metros, con "+ getAccesos() + " accesos\n Precio: "+getPrecio();
 	}
+	
 	@Override
 	public void verLocalidades() {
 		for (int i = 0; i<localidades.length; i++) {

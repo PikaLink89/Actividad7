@@ -7,7 +7,7 @@ public interface Sala {
 	public void verLocalidadesOcupadas();
 	public String venderLocalidad(int fila, int butaca, Espectador e);
 	public String cancelarLocalidad(int fila, int butaca);
-	public void consultarLocalidad(int fila, int butaca);
+	public String consultarLocalidad(int fila, int butaca);
 	public double calcularRecaudacion();
 	
 	
