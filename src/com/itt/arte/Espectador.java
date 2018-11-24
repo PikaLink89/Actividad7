@@ -7,9 +7,7 @@ public class Espectador {
 	
 	//METODOS
 	public String rangoEdad() {
-		
 		if (edad <= 12) {
-	
 			return "INFANTIL";
 		}
 		else { 
@@ -25,14 +23,9 @@ public class Espectador {
 						return "JUBILADO";
 					}
 			}
-			
 		}
 		return "";
-		
-		
 	}
-	
-	
 	
 	//CONSTRUCTORES
 	public Espectador() {
@@ -46,21 +39,11 @@ public class Espectador {
 		this.edad = edad;
 	}
 
-
-
-
-	
-
-
-
 	@Override
 	public String toString() {
 		return "Espectador [nombre=" + nombre + ", tlf=" + tlf + ", edad=" + edad + "]";
 	}
 	
-	
-	
-
 	//GETTER AND SETTERS
 	public String getNombre() {
 		return nombre;
@@ -85,6 +68,4 @@ public class Espectador {
 	public void setEdad(int edad) {
 		this.edad = edad;
 	}
-
-	
 }
