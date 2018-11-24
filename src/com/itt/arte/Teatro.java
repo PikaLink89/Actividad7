@@ -91,7 +91,10 @@ public class Teatro extends Local implements Sala {
 		}
 		@Override
 		public String venderLocalidad(int fila, int butaca, Espectador e) {
-				
+			this.localidades[fila][butaca] = e;
+			double precioEspectador;
+			precioEspectador = (e.getEdad()<=12)?this.precio*0.5:(e.getEdad()<=17)?this.precio*0.20:(e.getEdad()>=65)?this.precio*0.66:this.precio;
+			return "Se ha vendido la localidad " + fila + "." + butaca + " a " + e.getNombre() + " por " + precioEspectador + " euros.";				
 			
 			
 		}
