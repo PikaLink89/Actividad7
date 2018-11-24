@@ -44,30 +44,30 @@ public class Principal {
                                                        	 		 
                                                        	 	//Se realiza una lectura para el método venderlocalidad
                                                        case '4':
-                                                    	   int fila = 0;
-                                                    	   int butaca = 0;
-                                                    	   Espectador e = new Espectador();
-
-                                                    	   System.out.print("¿En que fila quiere sentarse (0-4)? ");
-                                                    	   fila = lector.nextInt();
-
-                                                    	   System.out.print("¿Y en que butaca (0-9)? ");
-                                                    	   butaca = lector.nextInt();
-
-                                                    	   System.out.print("Nombre ");
-                                                    	  
-                                                    	   e.setNombre(lector.next());
-
-                                                    	   System.out.print("¿Su teléfono? ");
-                                                    	  
-                                                    	  e.setTlf(lector.next());
-
-                                                    	   System.out.print("¿Cuantos años años tiene? ");
-                                                    	   
-                                                    	   e.setEdad(lector.nextInt());
-
-                                                    	   System.out.println(teatro.venderLocalidad(fila, butaca, e));
-                                                    	   break;
+                                                    	   int fila, butaca, edad;
+                                   						String nombre, tlf;
+                                   						Espectador e;						
+                                   						/*
+                                   						 *Se comprueba que la localidad elegida esta libre; 
+                                   						 */	
+                                   						do {
+                                   							System.out.println("¿En qué fila quieres sentante (0-4)?");
+                                   							fila = Integer.parseInt(lector.next());
+                                   							System.out.println("Y en qué butaca (0-9)?");
+                                   							butaca = Integer.parseInt(lector.next());
+                                   							teatro.consultarLocalidad(fila, butaca);
+                                   						}						
+                                   						while (teatro.consultarLocalidad(fila, butaca) != null);						
+                                   						//Si la localidad esta libre sigue el proceso
+                                   						System.out.println("¿Cómo se llama?");
+                                   						nombre = lector.next();
+                                   						System.out.println("¿Cuál es su teléfono?");
+                                   						tlf = lector.next();
+                                   						System.out.println("¿Qué edad tiene?");
+                                   						edad = Integer.parseInt(lector.next());	
+                                   						e = new Espectador(nombre, tlf, edad);
+                                   						//teatro.venderLocalidad(fila, butaca, e);
+                                   						System.out.println(teatro.venderLocalidad(fila, butaca, e));
                                                	  
                                                     	   
                                                        //Se realiza una lectura para el metodo cancelarlocalidad
