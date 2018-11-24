@@ -57,12 +57,13 @@ public class Teatro extends Local implements Sala  {
 		StringBuilder localidades = new StringBuilder();
 		for (int i=0; i < this.localidades.length; i++) {
 			for (int j=0; j < this.localidades[i].length; j++) {
-				String estado = ((this.localidades[i][j] == null)?"Ocupado":"libre");
 				if (this.localidades[i][j] == null)
-					localidades = localidades.append(i + "." + j + estado + "\t");
+					localidades = localidades.append(i + "." + j + " libre\t");
+				else
+					localidades = localidades.append(i + "." + j + " ocupado\t");
 			}
 			localidades = localidades.append("\n");
-		}
+		}		
 		return localidades.toString();
 	}
 
@@ -88,6 +89,7 @@ public class Teatro extends Local implements Sala  {
 	}
 
 	/**
+	 * Refractor.
 	 * Metodo para calcular el precio de cada espectador según su edad
 	 * 
 	 * @param e -> Tipo Objeto Espectador
@@ -95,7 +97,7 @@ public class Teatro extends Local implements Sala  {
 	 */
 	private double precioEspectador(Espectador e) {
 		double precioEspectador;
-		precioEspectador = (e.getEdad()<=12)?this.precio*0.5:(e.getEdad()<=17)?this.precio*0.20:(e.getEdad()>=65)?this.precio*0.66:this.precio;
+		precioEspectador = (e.getEdad()<=12)?this.precio*0.50:(e.getEdad()<=17)?this.precio*0.20:(e.getEdad()>=65)?this.precio*0.66:this.precio;
 		return precioEspectador;
 	}	
 

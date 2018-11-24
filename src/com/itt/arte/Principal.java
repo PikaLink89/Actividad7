@@ -13,7 +13,8 @@ private static Teatro teatro = new Teatro("C/ Sol, 45", 300, 2, obra, 30);
 				switch (opc) {
 					case '1':
 					case '2':
-						teatro.verLocalidades();
+						System.out.println(teatro.verLocalidades());						
+						break;
 					case '3':
 
 					/*
@@ -46,6 +47,7 @@ private static Teatro teatro = new Teatro("C/ Sol, 45", 300, 2, obra, 30);
 						e = new Espectador(nombre, tlf, edad);
 						//teatro.venderLocalidad(fila, butaca, e);
 						System.out.println(teatro.venderLocalidad(fila, butaca, e));
+						break;
 					case '5':
 					case '6':
 					case '7':
