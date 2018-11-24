@@ -80,9 +80,7 @@ public class Teatro extends Local implements Sala  {
 	}
 
 	/**
-	 * @author Juan Antonio Pavón Carmona
-	 * Método para vender una localidad en el Teatro.
-	 * 
+	 * Método para vender una localidad en el Teatro.	 * 
 	 * @return Tipo String con un mensaje indicado la ubiación de la localidad vendida, 
 	 * a quien ha sido vendida y el precio.
 	 *   
@@ -103,21 +101,24 @@ public class Teatro extends Local implements Sala  {
 	 */
 	private double precioEspectador(Espectador e) {
 		double precioEspectador;
-		precioEspectador = (e.getEdad()<=12)?this.precio*0.50:(e.getEdad()<=17)?this.precio*0.20:(e.getEdad()>=65)?this.precio*0.66:this.precio;
+		precioEspectador = (e.getEdad()<=12)?this.precio*0.50:(e.getEdad()<=17)?this.precio - (this.precio*0.20):(e.getEdad()>=65)?this.precio - (this.precio*0.66):this.precio;
 		return precioEspectador;
 	}	
 
 
 	@Override
 	public String cancelarLocalidad(int fila, int butaca) {
-		// TODO Auto-generated method stub
-		return null;
+		String nombre = this.localidades[fila][butaca].getNombre();		
+		this.localidades[fila][butaca] = null;
+		return nombre.toUpperCase() + "ha cancelado la reserva.";
 	}
 
 	@Override
 	public String consultarLocalidad(int fila, int butaca) {
-		// TODO Auto-generated method stub
-		return null;
+		if (this.localidades[fila][butaca] != null)
+			return "Localidad ocupada por " + this.localidades[fila][butaca].getNombre() + ", tlf: " + this.localidades[fila][butaca].getTlf() + ", Tipo: " + this.localidades[fila][butaca].rangoEdad() + " " + precioEspectador(this.localidades[fila][butaca]);			 
+		else
+			return null;
 	}
 
 	@Override

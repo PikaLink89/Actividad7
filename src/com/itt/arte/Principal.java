@@ -12,17 +12,19 @@ private static Teatro teatro = new Teatro("C/ Sol, 45", 300, 2, obra, 30);
 			opc = mostrarMenu();
 				switch (opc) {
 					case '1':
+
 					case '2':
 						System.out.println(teatro.verLocalidades());						
 						break;
-					case '3':
 
-					/*
-					 * Case 4
-					 * Autor Juan Antonio Pavón
-					 * 
-					 */	
+					case '3':
+						System.out.println(teatro.verLocalidadesOcupadas());
+						break;
+
 					case '4':
+						// Case 4
+						// Juan Antonio Pavón
+						
 						int fila, butaca, edad;
 						String nombre, tlf;
 						Espectador e;
@@ -33,11 +35,18 @@ private static Teatro teatro = new Teatro("C/ Sol, 45", 300, 2, obra, 30);
 						do {
 							System.out.println("¿En qué fila quieres sentante (0-4)?");
 							fila = Integer.parseInt(lector.next());
+							while ((fila < 0) || (fila > 4)) {
+								System.out.println("Debes introducir un valor entre 0 o 4, vuelve a intentarlo");
+								fila = Integer.parseInt(lector.next());								
+							}															
 							System.out.println("Y en qué butaca (0-9)?");
 							butaca = Integer.parseInt(lector.next());
-							teatro.consultarLocalidad(fila, butaca);
-						}						
-						while (teatro.consultarLocalidad(fila, butaca) != null);						
+							while ((butaca < 0) || (butaca > 9)) {
+								System.out.println("Debes introducir un valor entre 0 o 9, vuelve a intentarlo");
+								butaca = Integer.parseInt(lector.next());								
+							}
+						} while (teatro.consultarLocalidad(fila, butaca) != null);						
+						
 						//Si la localidad esta libre sigue el proceso 
 						System.out.println("¿Cómo se llama?");
 						nombre = lector.next();
@@ -49,8 +58,41 @@ private static Teatro teatro = new Teatro("C/ Sol, 45", 300, 2, obra, 30);
 						//teatro.venderLocalidad(fila, butaca, e);
 						System.out.println(teatro.venderLocalidad(fila, butaca, e));
 						break;
+
 					case '5':
+							System.out.println("¿Fila (0-4)?");
+							fila = Integer.parseInt(lector.next());
+							while ((fila < 0) || (fila > 4)) {
+								System.out.println("Debes introducir un valor entre 0 o 4, vuelve a intentarlo");
+								fila = Integer.parseInt(lector.next());								
+							}															
+							System.out.println("Butaca (0-9)?");
+							butaca = Integer.parseInt(lector.next());
+							while ((butaca < 0) || (butaca > 9)) {
+								System.out.println("Debes introducir un valor entre 0 o 9, vuelve a intentarlo");
+								butaca = Integer.parseInt(lector.next());								
+							}
+							System.out.println(teatro.cancelarLocalidad(fila, butaca));
+							break;
+
 					case '6':
+							System.out.println("¿En qué fila quieres sentante (0-4)?");
+							fila = Integer.parseInt(lector.next());
+							while ((fila < 0) || (fila > 4)) {
+								System.out.println("Debes introducir un valor entre 0 o 4, vuelve a intentarlo");
+								fila = Integer.parseInt(lector.next());								
+							}															
+							System.out.println("Y en qué butaca (0-9)?");
+							butaca = Integer.parseInt(lector.next());
+							while ((butaca < 0) || (butaca > 9)) {
+								System.out.println("Debes introducir un valor entre 0 o 9, vuelve a intentarlo");
+								butaca = Integer.parseInt(lector.next());								
+							}
+							if (teatro.consultarLocalidad(fila, butaca) != null) 
+								System.out.println(teatro.consultarLocalidad(fila, butaca));
+								else 							
+									System.out.println("La plaza está libre");
+						break;
 					case '7':
 						System.out.println("Recaudación: " + teatro.calcularRecaudacion() + "€");
 						break;
@@ -80,5 +122,6 @@ private static Teatro teatro = new Teatro("C/ Sol, 45", 300, 2, obra, 30);
 		opcion = lector.next();
 		
 		return opcion.charAt(0); // Devuelvo el primer caracter tecleado.
-	}
+	}	
+
 }
