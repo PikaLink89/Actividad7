@@ -28,6 +28,7 @@ private static Teatro teatro = new Teatro("C/ Sol, 45", 300, 2, obra, 30);
 						Espectador e;
 						
 						//Se comprueba que la localidad elegida esta libre; 
+						//Mientras la localidad este ocupada, le pedirá de nuevo libre sigue el proceso, sino 
 						 	
 						do {
 							System.out.println("¿En qué fila quieres sentante (0-4)?");
@@ -37,7 +38,7 @@ private static Teatro teatro = new Teatro("C/ Sol, 45", 300, 2, obra, 30);
 							teatro.consultarLocalidad(fila, butaca);
 						}						
 						while (teatro.consultarLocalidad(fila, butaca) != null);						
-						//Si la localidad esta libre sigue el proceso
+						//Si la localidad esta libre sigue el proceso 
 						System.out.println("¿Cómo se llama?");
 						nombre = lector.next();
 						System.out.println("¿Cuál es su teléfono?");
