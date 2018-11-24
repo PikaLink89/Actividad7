@@ -115,22 +115,22 @@ public class Teatro extends Local implements Sala {
 		
 		@Override
 		public String consultarLocalidad(int fila, int butaca) {
-			if(localidades[fila][butaca] != null ) {
+			if(this.localidades[fila][butaca] != null ) {
 				double preciocondescuento=0;
 				
-				if(localidades[fila][butaca].rangoEdad()=="INFANTIL") {
+				if(this.localidades[fila][butaca].rangoEdad()=="INFANTIL") {
 					preciocondescuento= (50*precio)/100;
 				}
 				else {
-					if(localidades[fila][butaca].rangoEdad()=="MENOR") {
+					if(this.localidades[fila][butaca].rangoEdad()=="MENOR") {
 						preciocondescuento= (20*precio)/100;
 					}
 					else {
-						if(localidades[fila][butaca].rangoEdad()=="MAYOR") {
+						if(this.localidades[fila][butaca].rangoEdad()=="MAYOR") {
 							preciocondescuento= precio;
 						}
 						else {
-							if(localidades[fila][butaca].rangoEdad()=="JUBILADO") {
+							if(this.localidades[fila][butaca].rangoEdad()=="JUBILADO") {
 								preciocondescuento= (66*precio)/100;
 							}
 						}
@@ -151,26 +151,26 @@ public class Teatro extends Local implements Sala {
 			double preciocondescuento =0;
 			double acumulado = 0;
 			for (int i = 0; i<localidades.length; i++) {
-				for (int j = 0; j<localidades[i].length; j++) {
+				for (int d = 0; d<localidades[i].length; d++) {
 					
-					while (localidades[i][j] != null)  {
-						if(localidades[i][j].rangoEdad()=="INFANTIL") {
+					if (localidades[i][d] != null)  {
+						if(localidades[i][d].rangoEdad()=="INFANTIL") {
 							
 							preciocondescuento= (50*precio)/100;
 							acumulado = acumulado + preciocondescuento;
 						}
 						else {
-							if(localidades[i][j].rangoEdad()=="MENOR") {
+							if(localidades[i][d].rangoEdad()=="MENOR") {
 								preciocondescuento= (20*precio)/100;
 								acumulado = acumulado + preciocondescuento;
 							}
 							else {
-								if(localidades[i][j].rangoEdad()=="MAYOR") {
+								if(localidades[i][d].rangoEdad()=="MAYOR") {
 									preciocondescuento= precio;
 									acumulado = acumulado + preciocondescuento;
 								}
 								else {
-									if(localidades[i][j].rangoEdad()=="JUBILADO") {
+									if(localidades[i][d].rangoEdad()=="JUBILADO") {
 										preciocondescuento= (66*precio)/100;
 										acumulado = acumulado + preciocondescuento;
 									}

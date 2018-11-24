@@ -91,7 +91,9 @@ public class Principal {
 
                                                     	   System.out.print("¿Butaca (0-9)? ");
                                                     	   butaca = lector.nextInt();
+                                                    	   
                                                     	   teatro.consultarLocalidad(fila, butaca);
+                                                    	   
                                                     	   break;
                                                     	   
                                                     	   
