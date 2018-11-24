@@ -37,18 +37,7 @@ public class Teatro extends Local implements Sala {
 	@Override
 	public void verLocalidades() {
 		for (int i = 0; i<localidades.length; i++) {
-			for (int d = 0; d<localidades[i].length; d++) {
-									
-				if (localidades[i][d] != null)  {
-					System.out.print(i+"."+d+" Ocupada ");
-				}
-				else {
-					System.out.print(i+"."+d+" Libre ");
-				}
-				
-				}
-			System.out.println("");
-		}
+		
 		
 	}
 	
@@ -61,15 +50,6 @@ public class Teatro extends Local implements Sala {
 	public void verLocalidadesOcupadas() {
 		
 		
-		for (int i = 0; i<localidades.length; i++) {
-			for (int d = 0; d<localidades[i].length; d++) {
-				if (localidades[i][d] != null)  {
-					System.out.println(i+"."+d+" "+localidades[i][d].getNombre()+", tlf: "+localidades[i][d].getTlf()
-							+", Tipo: "+localidades[i][d].rangoEdad());
-				}
-				
-			}
-		}
 		
 		
 			
@@ -81,37 +61,6 @@ public class Teatro extends Local implements Sala {
  */
 	@Override
 	public String venderLocalidad(int fila, int butaca, Espectador e) {
-		double preciocondescuento=0;
-		if(e.rangoEdad()=="INFANTIL") {
-			preciocondescuento= (50*precio)/100;
-		}
-		else {
-			if(e.rangoEdad()=="MENOR") {
-				preciocondescuento= (20*precio)/100;
-			}
-			else {
-				if(e.rangoEdad()=="MAYOR") {
-					preciocondescuento= precio;
-				}
-				else {
-					if(e.rangoEdad()=="JUBILADO") {
-						preciocondescuento= (66*precio)/100;
-					}
-				}
-			}
-		}
-		if(localidades[fila][butaca] != null ) {
-			return "La localidad está ocupada";
-			
-		}
-		else
-		{
-			localidades[fila][butaca] = e;
-			
-			
-			return "Se ha vendido la localidad " +fila +"."+ butaca+" a "+e.getNombre() + " por "+preciocondescuento;
-			
-				}
 		
 		
 		
@@ -125,16 +74,7 @@ public class Teatro extends Local implements Sala {
 
 	@Override
 	public String cancelarLocalidad(int fila, int butaca) {
-		if(localidades[fila][butaca] != null ) {
-			String nombretemporal;
-			nombretemporal = localidades[fila][butaca].getNombre();
-			localidades[fila][butaca] = null;
-			return nombretemporal+" ha cancelado su reserva";
-		}
-		else
-		{
-			return "La localidad ya estaba vacía";
-		}
+		
 	}
 
 	/*
@@ -144,33 +84,6 @@ public class Teatro extends Local implements Sala {
 	
 	@Override
 	public void consultarLocalidad(int fila, int butaca) {
-		if(localidades[fila][butaca] != null ) {
-			double preciocondescuento=0;
-			
-			if(localidades[fila][butaca].rangoEdad()=="INFANTIL") {
-				preciocondescuento= (50*precio)/100;
-			}
-			else {
-				if(localidades[fila][butaca].rangoEdad()=="MENOR") {
-					preciocondescuento= (20*precio)/100;
-				}
-				else {
-					if(localidades[fila][butaca].rangoEdad()=="MAYOR") {
-						preciocondescuento= precio;
-					}
-					else {
-						if(localidades[fila][butaca].rangoEdad()=="JUBILADO") {
-							preciocondescuento= (66*precio)/100;
-						}
-					}
-				}
-			}
-			System.out.println("Localidad ocupada por " +localidades[fila][butaca].getNombre()+", tlf: "+localidades[fila][butaca].getTlf()
-					+" Tipo: "+localidades[fila][butaca].rangoEdad()+", Precio: " +preciocondescuento);
-		}
-		else{
-			System.out.println("Localidad Vacía ");
-		}
 		
 		
 		
