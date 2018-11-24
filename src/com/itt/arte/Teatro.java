@@ -79,17 +79,6 @@ public class Teatro extends Local implements Sala {
 		}
 		
 		
-		/*
-		@Override
-		public String cancelarLocalidad(int fila, int butaca) {
-			
-			return localidades[fila][butaca].getNombre() + " " + " ha cancelado la reserva";		
-			localidades[fila][butaca] = null;		
-				
-		}
-		*/
-		
-
 		@Override
 		public String cancelarLocalidad(int fila, int butaca) {
 			
