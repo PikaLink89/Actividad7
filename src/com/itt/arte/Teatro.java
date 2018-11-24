@@ -69,8 +69,14 @@ public class Teatro extends Local implements Sala  {
 
 	@Override
 	public String verLocalidadesOcupadas() {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuilder localidades = new StringBuilder();
+		for (int i=0; i < this.localidades.length; i++) {
+			for (int j=0; j < this.localidades[i].length; j++) {
+				if (this.localidades[i][j] != null)
+					localidades = localidades.append(i + "." + j + " " + this.localidades[i][j].getNombre().toUpperCase() + ", Tlf: " + this.localidades[i][j].getTlf() + ", Tipo: " + this.localidades[i][j].rangoEdad().toUpperCase() + "\n");
+			}
+		}		
+		return localidades.toString();
 	}
 
 	/**
@@ -116,8 +122,14 @@ public class Teatro extends Local implements Sala  {
 
 	@Override
 	public double calcularRecaudacion() {
-		// TODO Auto-generated method stub
-		return 0;
+		double recaudacion = 0;
+		for (int i=0; i < this.localidades.length; i++) {
+			for (int j=0; j < this.localidades[i].length; j++) {
+				if (this.localidades[i][j] != null)
+					recaudacion += precioEspectador(this.localidades[i][j]);					
+			}
+		}		
+		return recaudacion;
 	}
 	
 	

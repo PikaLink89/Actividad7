@@ -52,6 +52,8 @@ private static Teatro teatro = new Teatro("C/ Sol, 45", 300, 2, obra, 30);
 					case '5':
 					case '6':
 					case '7':
+						System.out.println("Recaudación: " + teatro.calcularRecaudacion() + "€");
+						break;
 					case '8':
 					default:
 				}

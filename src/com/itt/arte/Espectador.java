@@ -7,17 +7,14 @@ public class Espectador {
 	private String tlf;
 	private int edad;
 	
-	//Constructor de Espectador
-	
+	//Constructor de Espectador	
 	public Espectador(String nombre, String tlf, int edad) {
 		this.nombre = nombre;
 		this.tlf = tlf;
 		this.edad = edad;
 	}
-
 	
-	//Getters & Setters para el acceso a las propiedades
-	
+	//Getters & Setters para el acceso a las propiedades	
 	public String getNombre() {
 		return nombre;
 	}
@@ -61,8 +58,6 @@ public class Espectador {
 						return "Tipo: JUBILADO";
 					else
 						return "Por favor, ponga una edad correcta";
-			
-				
 	}		
 }	
 		
