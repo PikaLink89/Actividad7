@@ -50,27 +50,45 @@ public class Teatro extends Local implements Sala {
 	
 	
 	//Métodos propios
-		@Override
-		public String verProgramacion() {
-			
-			
-		}
+	public String verProgramacion() {
+		
+		return "Hoy representamos "+ getObra().getTitulo() 
+				+ ", género: "+getObra().getGenero() + ", Duracción: "
+				+ getObra().getMinutosDuracion() + "\n En "+ getDomicilio() 
+				+ ", Local de " +getMetros() + " metros, con "+ getAccesos() + " accesos\n Precio: "+getPrecio();
+	}
 
 			
 		@Override
 		public void verLocalidades() {
-			
+			for (int i = 0; i<localidades.length; i++) {
+				for (int d = 0; d<localidades[i].length; d++) {
+										
+					if (localidades[i][d] != null)  {
+						System.out.print(i+"."+d+" Ocupada ");
+					}
+					else {
+						System.out.print(i+"."+d+" Libre ");
+					}
+					
+					}
+				System.out.println("");
+			}
 			
 		}
 		
 
 		@Override
 		public void verLocalidadesOcupadas() {
-			
-				
+			for (int i = 0; i<localidades.length; i++) {
+				for (int d = 0; d<localidades[i].length; d++) {
+					if (localidades[i][d] != null)  {
+						System.out.println(i+"."+d+" "+localidades[i][d].getNombre()+", tlf: "+localidades[i][d].getTlf()
+								+", Tipo: "+localidades[i][d].rangoEdad());
+					}
+				}
+			}
 		}
-
-
 		@Override
 		public String venderLocalidad(int fila, int butaca, Espectador e) {
 				
@@ -92,13 +110,18 @@ public class Teatro extends Local implements Sala {
 				
 		}
 		
-		
 		@Override
-		public void consultarLocalidad(int fila, int butaca) {
-			
+		public String consultarLocalidad(int fila, int butaca) {
+			if (localidades [fila][butaca]!=null) {
+				this.localidades[fila][butaca]=localidades[fila][butaca];
+				double precioEspectador;
+				precioEspectador = (this.localidades[fila][butaca].getEdad()<=12)?this.precio*0.5:(this.localidades[fila][butaca].getEdad()<=17)?this.precio*0.20:(this.localidades[fila][butaca].getEdad()>=65)?this.precio*0.66:this.precio;	
+				
+				return "localidad ocupada por "+ localidades[fila][butaca].getNombre().toUpperCase() + ", tlf: " + localidades[fila][butaca].getTlf()
+						+ ", tipo: " + localidades[fila][butaca].rangoEdad() + ", precio: " + precioEspectador;				
+			}else {
+				return "localidad libre";}
 		}
-		
-		
 
 		@Override
 		public double calcularRecaudacion() {
