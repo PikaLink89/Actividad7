@@ -44,12 +44,13 @@ public class Principal {
                                                        	 		 
                                                        	 	//Se realiza una lectura para el método venderlocalidad
                                                        case '4':
-                                                    	   int fila, butaca, edad;
+                                                    	int fila, butaca, edad;
                                    						String nombre, tlf;
                                    						Espectador e;						
                                    						/*
                                    						 *Se comprueba que la localidad elegida esta libre; 
                                    						 */	
+                                   						
                                    						do {
                                    							System.out.println("¿En qué fila quieres sentante (0-4)?");
                                    							fila = Integer.parseInt(lector.next());
@@ -57,7 +58,7 @@ public class Principal {
                                    							butaca = Integer.parseInt(lector.next());
                                    							teatro.consultarLocalidad(fila, butaca);
                                    						}						
-                                   						while (teatro.consultarLocalidad(fila, butaca) != null);						
+                                   						while (teatro.consultarLocalidad(fila, butaca) == null);						
                                    						//Si la localidad esta libre sigue el proceso
                                    						System.out.println("¿Cómo se llama?");
                                    						nombre = lector.next();
@@ -68,7 +69,7 @@ public class Principal {
                                    						e = new Espectador(nombre, tlf, edad);
                                    						//teatro.venderLocalidad(fila, butaca, e);
                                    						System.out.println(teatro.venderLocalidad(fila, butaca, e));
-                                               	  
+                                   						break;
                                                     	   
                                                        //Se realiza una lectura para el metodo cancelarlocalidad
                                                        case '5':

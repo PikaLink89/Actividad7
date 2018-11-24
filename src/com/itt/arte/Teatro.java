@@ -104,28 +104,48 @@ public class Teatro extends Local implements Sala {
 		public String cancelarLocalidad(int fila, int butaca) {
 			
 			if(localidades[fila][butaca] == null)
-				return "La plaza ya estaba libre";
+				return "La plaza ya estaba libre\n\n";
 			else {
 				String nombre = localidades[fila][butaca].getNombre();
 				localidades[fila][butaca] = null;
-				return nombre.toUpperCase() + " ha cancelado su reserva";
+				return nombre.toUpperCase() + " ha cancelado su reserva\n\n";
 			}
 				
 		}
 		
 		@Override
 		public String consultarLocalidad(int fila, int butaca) {
-			if (localidades [fila][butaca]!=null) {
-				this.localidades[fila][butaca]=localidades[fila][butaca];
-				double precioEspectador;
-				precioEspectador = (this.localidades[fila][butaca].getEdad()<=12)?this.precio*0.5:(this.localidades[fila][butaca].getEdad()<=17)?this.precio*0.20:(this.localidades[fila][butaca].getEdad()>=65)?this.precio*0.66:this.precio;	
+			if(localidades[fila][butaca] != null ) {
+				double preciocondescuento=0;
 				
-				return "localidad ocupada por "+ localidades[fila][butaca].getNombre().toUpperCase() + ", tlf: " + localidades[fila][butaca].getTlf()
-						+ ", tipo: " + localidades[fila][butaca].rangoEdad() + ", precio: " + precioEspectador;				
-			}else {
-				return "localidad libre";}
+				if(localidades[fila][butaca].rangoEdad()=="INFANTIL") {
+					preciocondescuento= (50*precio)/100;
+				}
+				else {
+					if(localidades[fila][butaca].rangoEdad()=="MENOR") {
+						preciocondescuento= (20*precio)/100;
+					}
+					else {
+						if(localidades[fila][butaca].rangoEdad()=="MAYOR") {
+							preciocondescuento= precio;
+						}
+						else {
+							if(localidades[fila][butaca].rangoEdad()=="JUBILADO") {
+								preciocondescuento= (66*precio)/100;
+							}
+						}
+					}
+				}
+				return"Localidad ocupada por " +localidades[fila][butaca].getNombre()+", tlf: "+localidades[fila][butaca].getTlf()
+						+" Tipo: "+localidades[fila][butaca].rangoEdad()+", Precio: " +preciocondescuento;
+			}
+			else{
+				return"Localidad Vacía ";
+			}
+			
+			
+			
 		}
-
 		@Override
 		public double calcularRecaudacion() {
 			double preciocondescuento =0;
