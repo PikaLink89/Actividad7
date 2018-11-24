@@ -13,39 +13,49 @@ public class Principal {
             do {
             	opc = mostrarMenu();
             	switch (opc) {
+            		case '1':
+						//Se consulta programación
+						System.out.println(teatro.verProgramacion());
+						break;
  
-	               case '1':
-	                   //Se consulta programación
-	            	   System.out.println(teatro.verProgramacion());
-	            	   break;
- 
-	        	   case '2':
-	            	   //Se ven todas las localidades
-	        		   teatro.verLocalidades();
-	        		   break;
+            		case '2':
+            			//Se ven todas las localidades
+            			teatro.verLocalidades();
+            			break;
         	  
              
-	        	   case '3':
-	        		   //Se muestran unicamente las ocupadas
-	        		   teatro.verLocalidadesOcupadas();
-	        		   break;
+            		case '3':
+            			//Se muestran unicamente las ocupadas
+            			teatro.verLocalidadesOcupadas();
+            			break;
  
-	        	   case '4':
-						//Se realiza una lectura para el método venderlocalidad
+        			case '4':
+						// Case 4
+						// Juan Antonio Pavón
+						
 						int fila, butaca, edad;
 						String nombre, tlf;
-						Espectador e;						
-					
-						//Se comprueba que la localidad elegida esta libre;
+						Espectador e;
+						
+						//Se comprueba que la localidad elegida esta libre; 
+						//Mientras la localidad este ocupada, le pedirá de nuevo libre sigue el proceso, sino 
+						 	
 						do {
 							System.out.println("¿En qué fila quieres sentante (0-4)?");
-						fila = Integer.parseInt(lector.next());
-						System.out.println("Y en qué butaca (0-9)?");
+							fila = Integer.parseInt(lector.next());
+							while ((fila < 0) || (fila > 4)) {
+								System.out.println("Debes introducir un valor entre 0 o 4, vuelve a intentarlo");
+								fila = Integer.parseInt(lector.next());								
+							}															
+							System.out.println("Y en qué butaca (0-9)?");
 							butaca = Integer.parseInt(lector.next());
-							teatro.consultarLocalidad(fila, butaca);
-						}						
-						while (teatro.consultarLocalidad(fila, butaca) == null);						
-						//Si la localidad esta libre sigue el proceso
+							while ((butaca < 0) || (butaca > 9)) {
+								System.out.println("Debes introducir un valor entre 0 o 9, vuelve a intentarlo");
+								butaca = Integer.parseInt(lector.next());								
+							}
+						} while (teatro.consultarLocalidad(fila, butaca) != null);						
+						
+						//Si la localidad esta libre sigue el proceso 
 						System.out.println("¿Cómo se llama?");
 						nombre = lector.next();
 						System.out.println("¿Cuál es su teléfono?");
@@ -53,11 +63,12 @@ public class Principal {
 						System.out.println("¿Qué edad tiene?");
 						edad = Integer.parseInt(lector.next());	
 						e = new Espectador(nombre, tlf, edad);
+						//teatro.venderLocalidad(fila, butaca, e);
 						System.out.println(teatro.venderLocalidad(fila, butaca, e));
 						break;
 	   
-	        	   case '5':
-						//Se realiza una lectura para el metodo cancelarlocalidad
+        			case '5':
+        				//Se realiza una lectura para el metodo cancelarlocalidad
 						System.out.print("¿Fila (0-4)? ");
 						fila = lector.nextInt();  
 						System.out.print("¿Butaca (0-9)? ");
@@ -66,26 +77,25 @@ public class Principal {
 						break;
 
    
-				   case '6':
-					   //Se hace una lecutra para consultarlocalidad
-					   System.out.print("¿Fila (0-4)? ");
-					   fila = lector.nextInt();  
+        			case '6':
+        				//Se hace una lecutra para consultarlocalidad
+        				System.out.print("¿Fila (0-4)? ");
+        				fila = lector.nextInt();  
 				
-					   System.out.print("¿Butaca (0-9)? ");
-					   butaca = lector.nextInt();
-					   teatro.consultarLocalidad(fila, butaca);
-					   break;
+        				System.out.print("¿Butaca (0-9)? ");
+        				butaca = lector.nextInt();
+        				teatro.consultarLocalidad(fila, butaca);
+        				break;
    
-				   case '7':
-					   //llama al método que calcular la recaudación
-					   System.out.println(teatro.calcularRecaudacion());
-				       break;
+        			case '7':
+        				//llama al método que calcular la recaudación
+        				System.out.println(teatro.calcularRecaudacion());
+        				break;
        
 				   case '8':
-					   //Salida del programa
-					   System.out.println("Hasta pronto");
-					   break;
-	   
+					   	//Salida del programa
+					   	System.out.println("Hasta pronto");
+					   	break;
 				   default:                        	   
               }
 
