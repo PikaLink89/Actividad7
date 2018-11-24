@@ -115,22 +115,22 @@ public class Teatro extends Local implements Sala {
 		
 		@Override
 		public String consultarLocalidad(int fila, int butaca) {
-			if(this.localidades[fila][butaca] != null ) {
+			if(localidades[fila][butaca] != null ) {
 				double preciocondescuento=0;
 				
-				if(this.localidades[fila][butaca].rangoEdad()=="INFANTIL") {
+				if(localidades[fila][butaca].rangoEdad()=="INFANTIL") {
 					preciocondescuento= (50*precio)/100;
 				}
 				else {
-					if(this.localidades[fila][butaca].rangoEdad()=="MENOR") {
+					if(localidades[fila][butaca].rangoEdad()=="MENOR") {
 						preciocondescuento= (20*precio)/100;
 					}
 					else {
-						if(this.localidades[fila][butaca].rangoEdad()=="MAYOR") {
+						if(localidades[fila][butaca].rangoEdad()=="MAYOR") {
 							preciocondescuento= precio;
 						}
 						else {
-							if(this.localidades[fila][butaca].rangoEdad()=="JUBILADO") {
+							if(localidades[fila][butaca].rangoEdad()=="JUBILADO") {
 								preciocondescuento= (66*precio)/100;
 							}
 						}
