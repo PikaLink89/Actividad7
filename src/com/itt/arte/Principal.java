@@ -13,7 +13,9 @@ private static Teatro teatro = new Teatro("C/ Sol, 45", 300, 2, obra, 30);
 				switch (opc) {
 					case '1':
 					case '2':
+						teatro.verLocalidades();
 					case '3':
+
 					/*
 					 * Case 4
 					 * Autor Juan Antonio Pavón
@@ -22,10 +24,10 @@ private static Teatro teatro = new Teatro("C/ Sol, 45", 300, 2, obra, 30);
 					case '4':
 						int fila, butaca, edad;
 						String nombre, tlf;
-						Espectador e;						
-						/*
-						 *Se comprueba que la localidad elegida esta libre; 
-						 */	
+						Espectador e;
+						
+						//Se comprueba que la localidad elegida esta libre; 
+						 	
 						do {
 							System.out.println("¿En qué fila quieres sentante (0-4)?");
 							fila = Integer.parseInt(lector.next());

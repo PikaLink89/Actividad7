@@ -37,8 +37,5 @@ public class Local {
 
 	public void setAccesos(int accesos) {
 		this.accesos = accesos;
-	}
-	
-	
-	
+	}	
 }
