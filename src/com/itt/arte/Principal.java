@@ -37,7 +37,7 @@ public class Principal {
 						Espectador e;
 						
 						//Se comprueba que la localidad elegida esta libre;
-						//Se
+						//S
 						//Mientras la localidad este ocupada, le pedirá de nuevo libre sigue el proceso, sino 
 						 	
 						System.out.println("¿En qué fila quieres sentante (0-4)?");
