@@ -75,40 +75,47 @@ public class Teatro extends Local implements Sala {
 	//	MÉTODOS IMPLEMENTADOS POR LA INTERFACE
 	//*********************************************/
 	
-	//-> Revisar este método se puede hacer con String	
+	/**
+	 * Método para ver todas las localidades del teatro.
+	 * @return String con todas las localidades del teatro con información si esta libre o ocupada.
+	 * 
+	 * Se utiliza el StringBuilder para ir recogiendo las localidades.
+	 * Al finalizar se utiliza .toString(); para hacer transfomarlo a String y para hacer el método acorde al enunciado.
+	 */
 	@Override
-	public void verLocalidades() {
-		for (int i = 0; i<localidades.length; i++) {
-			for (int d = 0; d<localidades[i].length; d++) {
-									
-				if (localidades[i][d] != null)  {
-					System.out.print(i+"."+d+" Ocupada ");
-				}
-				else {
-					System.out.print(i+"."+d+" Libre ");
-				}
-				
-				}
-			System.out.println("");
-		}
-		
+	public String verLocalidades() {
+		StringBuilder localidades = new StringBuilder();
+		for (int i=0; i < this.localidades.length; i++) {
+			for (int j=0; j < this.localidades[i].length; j++) {
+				if (this.localidades[i][j] == null)
+					localidades = localidades.append(i + "." + j + " libre\t");
+				else
+					localidades = localidades.append(i + "." + j + " ocupado\t");
+			}
+			localidades = localidades.append("\n");
+		}		
+		return localidades.toString();
 	}
 		
-	//-> Revisar este método se puede hacer con String	
+	/**
+	 * Metodo para ver las localidades ocupadas del teatro.
+	 * @return String con la información de todas las localidades ocupadas, con información del Espectador como
+	 * Nombre, teléfono y tio de espetador.
+	 */
 	@Override
-	public void verLocalidadesOcupadas() {
-		for (int i = 0; i<localidades.length; i++) {
-			for (int d = 0; d<localidades[i].length; d++) {
-				if (localidades[i][d] != null)  {
-					System.out.println(i+"."+d+" "+localidades[i][d].getNombre()+", tlf: "+localidades[i][d].getTlf()
-							+", Tipo: "+localidades[i][d].rangoEdad());
-				}
+	public String verLocalidadesOcupadas() {
+		StringBuilder localidades = new StringBuilder();
+		for (int i=0; i < this.localidades.length; i++) {
+			for (int j=0; j < this.localidades[i].length; j++) {
+				if (this.localidades[i][j] != null)
+					localidades = localidades.append(i + "." + j + " " + this.localidades[i][j].getNombre().toUpperCase() + ", Tlf: " + this.localidades[i][j].getTlf() + ", Tipo: " + this.localidades[i][j].rangoEdad().toUpperCase() + "\n");
 			}
-		}
+		}		
+		return localidades.toString();
 	}
 
 	/**
-	 * Método para vender una localidad en el Teatro.	 * 
+	 * Método para vender una localidad en el Teatro.	  
 	 * @return Tipo String con un mensaje indicado la ubiación de la localidad vendida, 
 	 * a quien ha sido vendida y el precio.
 	 *   
@@ -120,18 +127,19 @@ public class Teatro extends Local implements Sala {
 		return "Se ha vendido la localidad " + fila + "." + butaca + " a " + e.getNombre() + " por " + precioEspectador + " euros.";		
 	}
 	
-	
+	/**
+	 * Método para cancelar una localidad de en el teatro 
+	 * @param 
+	 */
 	@Override
 	public String cancelarLocalidad(int fila, int butaca) {
-		
 		if(localidades[fila][butaca] == null)
-			return "La plaza ya estaba libre\n\n";
+			return "La plaza ya está libre\n\n";
 		else {
 			String nombre = localidades[fila][butaca].getNombre();
 			localidades[fila][butaca] = null;
 			return nombre.toUpperCase() + " ha cancelado su reserva\n\n";
-		}
-			
+		}			
 	}
 	
 	/**
@@ -147,50 +155,27 @@ public class Teatro extends Local implements Sala {
 	@Override
 	public String consultarLocalidad(int fila, int butaca) {
 		if (this.localidades[fila][butaca] != null)
-			return "Localidad ocupada por " + this.localidades[fila][butaca].getNombre() + ", tlf: " + this.localidades[fila][butaca].getTlf() + ", " + this.localidades[fila][butaca].rangoEdad() + " " + precioEspectador(this.localidades[fila][butaca]) + "€.";			 
+			return "Localidad ocupada por " + this.localidades[fila][butaca].getNombre() + ", tlf: " + this.localidades[fila][butaca].getTlf() + ", " + this.localidades[fila][butaca].rangoEdad() + ", Precio: " + precioEspectador(this.localidades[fila][butaca]) + "€.";			 
 		else
 			return null;
 	}
 	
-	
+	/**
+	 * Método para calcular la recaudación total del Teatro
+	 * @return double con el total de la recaudación, teniendo en cuenta el tipo de espetador.
+	 * 
+	 * Se usa el método precioEspectador(e) para calcular el precio del espectador según su edad.	
+	 */
 	@Override
 	public double calcularRecaudacion() {
-		double preciocondescuento =0;
-		double acumulado = 0;
-		for (int i = 0; i<localidades.length; i++) {
-			for (int d = 0; d<localidades[i].length; d++) {
-				
-				if (localidades[i][d] != null)  {
-					if(localidades[i][d].rangoEdad()=="INFANTIL") {
-						
-						preciocondescuento= (50*precio)/100;
-						acumulado = acumulado + preciocondescuento;
-					}
-					else {
-						if(localidades[i][d].rangoEdad()=="MENOR") {
-							preciocondescuento= (20*precio)/100;
-							acumulado = acumulado + preciocondescuento;
-						}
-						else {
-							if(localidades[i][d].rangoEdad()=="MAYOR") {
-								preciocondescuento= precio;
-								acumulado = acumulado + preciocondescuento;
-							}
-							else {
-								if(localidades[i][d].rangoEdad()=="JUBILADO") {
-									preciocondescuento= (66*precio)/100;
-									acumulado = acumulado + preciocondescuento;
-								}
-							}
-						}
-					}
-				}
-				
+		double recaudacion = 0;
+		for (int i=0; i < this.localidades.length; i++) {
+			for (int j=0; j < this.localidades[i].length; j++) {
+				if (this.localidades[i][j] != null)
+					recaudacion += precioEspectador(this.localidades[i][j]);					
 			}
-		}
-		
-		return acumulado;
-			
+		}		
+		return recaudacion;
 	}
 	
 	//*******************************************************************/

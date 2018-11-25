@@ -20,9 +20,8 @@ public class Principal {
  
             		case '2':
             			//Se ven todas las localidades
-            			teatro.verLocalidades();
-            			break;
-        	  
+            			System.out.println(teatro.verLocalidades());
+            			break;        	  
              
             		case '3':
             			//Se muestran unicamente las ocupadas
@@ -87,9 +86,9 @@ public class Principal {
         				System.out.print("¿Butaca (0-9)? ");
         				butaca = Integer.parseInt(lector.next());
 						if (teatro.consultarLocalidad(fila, butaca) != null) 
-							System.out.println(teatro.consultarLocalidad(fila, butaca));
+							System.out.println(teatro.consultarLocalidad(fila, butaca) + "\n");
 							else 							
-								System.out.println("La plaza está libre");
+								System.out.println("La plaza está libre\n");
 						break;
    
         			case '7':
