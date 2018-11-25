@@ -134,39 +134,25 @@ public class Teatro extends Local implements Sala {
 			
 	}
 	
+	/**
+	 * Método para consultar una localidad en contreto. Debe de recoger la fila y butaca a consultar.
+	 * 
+	 * @param fila -> Tipo entero, para recoger la fila de la localidad a consultar.
+	 * @param butaca -> Tipo entero, para recoger la butaca de la fila determinada a consultar.
+	 * @return String Si la localidad esta ocupada devuelte una cadena con la información, si no lo está, devuelve null.
+	 * 
+	 * <b>Nota</b>Este método tambíen se usa para en el momento de vender una localidad saber si esta ocupada, por ello el asignarle null sino lo está y
+	 * poder reutilizar el método.
+	 */
 	@Override
 	public String consultarLocalidad(int fila, int butaca) {
-		if(localidades[fila][butaca] != null ) {
-			double preciocondescuento=0;
-			
-			if(localidades[fila][butaca].rangoEdad()=="INFANTIL") {
-				preciocondescuento= (50*precio)/100;
-			}
-			else {
-				if(localidades[fila][butaca].rangoEdad()=="MENOR") {
-					preciocondescuento= (20*precio)/100;
-				}
-				else {
-					if(localidades[fila][butaca].rangoEdad()=="MAYOR") {
-						preciocondescuento= precio;
-					}
-					else {
-						if(localidades[fila][butaca].rangoEdad()=="JUBILADO") {
-							preciocondescuento= (66*precio)/100;
-						}
-					}
-				}
-			}
-			return"Localidad ocupada por " +localidades[fila][butaca].getNombre()+", tlf: "+localidades[fila][butaca].getTlf()
-					+" Tipo: "+localidades[fila][butaca].rangoEdad()+", Precio: " +preciocondescuento;
-		}
-		else{
-			return"Localidad Vacía ";
-		}
-		
-		
-		
+		if (this.localidades[fila][butaca] != null)
+			return "Localidad ocupada por " + this.localidades[fila][butaca].getNombre() + ", tlf: " + this.localidades[fila][butaca].getTlf() + ", " + this.localidades[fila][butaca].rangoEdad() + " " + precioEspectador(this.localidades[fila][butaca]) + "€.";			 
+		else
+			return null;
 	}
+	
+	
 	@Override
 	public double calcularRecaudacion() {
 		double preciocondescuento =0;
