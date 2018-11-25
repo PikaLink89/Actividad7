@@ -75,6 +75,18 @@ public class Teatro extends Local implements Sala {
 	//*********************************************/
 	//	MÉTODOS IMPLEMENTADOS POR LA INTERFACE
 	//*********************************************/
+	/**
+	 * Método ver Programación
+	 * @return Tipo String con la información de la programación del teatro.
+	 * 
+	 */
+	@Override
+	public String verProgramacion() {
+		return "Hoy representamos "+ getObra().getTitulo() 
+				+ ", género: "+ getObra().getGenero() + ", Duración: "
+				+ getObra().getMinutosDuracion() + "\nEn "+ getDomicilio() 
+				+ ", Local de " +getMetros() + " metros, con "+ getAccesos() + " accesos\nPrecio: "+getPrecio(); 
+	}	
 	
 	/**
 	 * Método para ver todas las localidades del teatro.
@@ -111,8 +123,11 @@ public class Teatro extends Local implements Sala {
 				if (this.localidades[i][j] != null)
 					localidades = localidades.append(i + "." + j + " " + this.localidades[i][j].getNombre().toUpperCase() + ", Tlf: " + this.localidades[i][j].getTlf() + ", Tipo: " + this.localidades[i][j].rangoEdad().toUpperCase() + "\n");
 			}
-		}		
-		return localidades.toString();
+		}
+		if (localidades.toString() == "")
+			return "Todas las plazas estan libres\n";
+		else
+			return localidades.toString();
 	}
 
 	/**
@@ -125,12 +140,13 @@ public class Teatro extends Local implements Sala {
 	public String venderLocalidad(int fila, int butaca, Espectador e) {		
 		this.localidades[fila][butaca] = e;
 		double precioEspectador = precioEspectador(e);
-		return "Se ha vendido la localidad " + fila + "." + butaca + " a " + e.getNombre() + " por " + precioEspectador + " euros.";		
+		return "Se ha vendido la localidad " + fila + "." + butaca + " a " + e.getNombre() + " por " + precioEspectador + "€.\n";		
 	}
 	
 	/**
 	 * Método para cancelar una localidad de en el teatro 
-	 * @param 
+	 * @param fila. Tipo entero con el número de la fila.
+	 * @param butaca. Tipo entero con el número de la butaca.
 	 */
 	@Override
 	public String cancelarLocalidad(int fila, int butaca) {
@@ -146,8 +162,8 @@ public class Teatro extends Local implements Sala {
 	/**
 	 * Método para consultar una localidad en contreto. Debe de recoger la fila y butaca a consultar.
 	 * 
-	 * @param fila -> Tipo entero, para recoger la fila de la localidad a consultar.
-	 * @param butaca -> Tipo entero, para recoger la butaca de la fila determinada a consultar.
+	 * @param fila. Tipo entero con el número de la fila.
+	 * @param butaca. Tipo entero con el número de la butaca.
 	 * @return String Si la localidad esta ocupada devuelte una cadena con la información, si no lo está, devuelve null.
 	 * 
 	 * <b>Nota</b>Este método tambíen se usa para en el momento de vender una localidad saber si esta ocupada, por ello el asignarle null sino lo está y
@@ -179,28 +195,15 @@ public class Teatro extends Local implements Sala {
 		return recaudacion;
 	}
 	
-	//******************************************************************/
+	//*******************************************************************/
 	//MÉTODOS PROPIOS
-	//******************************************************************/
+	//*******************************************************************/
 	/**
-	 * Método ver Programación
-	 * @return Tipo String con la información de la programación del teatro.
-	 */
-	public String verProgramacion() {
-		return "Hoy representamos "+ getObra().getTitulo() 
-				+ ", género: "+ getObra().getGenero() + ", Duración: "
-				+ getObra().getMinutosDuracion() + "\nEn "+ getDomicilio() 
-				+ ", Local de " +getMetros() + " metros, con "+ getAccesos() + " accesos\nPrecio: "+getPrecio();
-	}
-	
-	/**
-	 * Refractor.
-	 * Se habia implemetnado en venderLocalidad(); pero se ha extraido con
-	 * refractor para usarlo como método de la clase.
-	 * Metodo para calcular el precio de cada espectador según su edad
+	 * Metodo para calcular el precio de cada espectador según su edad	   
 	 * 
-	 * @param e -> Tipo Objeto Espectador
-	 * @return -> Tipo double con el precio los descuentos
+	 * @param e. Tipo Objeto Espectador
+	 * @return double con el precio los descuentos.
+	 * 
 	 */
 	private double precioEspectador(Espectador e) {
 		double precioEspectador;
