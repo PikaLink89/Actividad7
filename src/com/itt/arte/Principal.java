@@ -40,7 +40,7 @@ public class Principal {
 						//S
 						//Mientras la localidad este ocupada, le pedirá de nuevo libre sigue el proceso, sino 
 						 	
-						System.out.println("¿En qué fila quieres sentante (0-4)?");
+						System.out.println("¿En qué fila quieres sentarte (0-4)?");
 						fila = Integer.parseInt(lector.next());
 						while ((fila < 0) || (fila > 4)) {
 							System.out.println("Debes introducir un valor entre 0 o 4, vuelve a intentarlo");
