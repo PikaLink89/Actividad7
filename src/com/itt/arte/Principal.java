@@ -12,6 +12,8 @@ private static Teatro teatro = new Teatro("C/ Sol, 45", 300, 2, obra, 30);
 			opc = mostrarMenu();
 				switch (opc) {
 					case '1':
+						System.out.println(teatro.verProgramacion());
+						break;
 
 					case '2':
 						System.out.println(teatro.verLocalidades());						
@@ -76,13 +78,13 @@ private static Teatro teatro = new Teatro("C/ Sol, 45", 300, 2, obra, 30);
 							break;
 
 					case '6':
-							System.out.println("¿En qué fila quieres sentante (0-4)?");
+							System.out.println("¿Fila (0-4)?");
 							fila = Integer.parseInt(lector.next());
 							while ((fila < 0) || (fila > 4)) {
 								System.out.println("Debes introducir un valor entre 0 o 4, vuelve a intentarlo");
 								fila = Integer.parseInt(lector.next());								
 							}															
-							System.out.println("Y en qué butaca (0-9)?");
+							System.out.println("Butaca (0-9)?");
 							butaca = Integer.parseInt(lector.next());
 							while ((butaca < 0) || (butaca > 9)) {
 								System.out.println("Debes introducir un valor entre 0 o 9, vuelve a intentarlo");

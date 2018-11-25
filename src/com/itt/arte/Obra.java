@@ -13,6 +13,42 @@ public class Obra {
 		this.genero = genero;
 		this.minutosDuracion = minutosDuracion;
 	}
+	
+	//Get & Set	
+	public String getTitulo() {
+		return titulo;
+	}
+
+
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+
+
+	public String getGenero() {
+		return genero;
+	}
+
+
+
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
+
+
+
+	public int getMinutosDuracion() {
+		return minutosDuracion;
+	}
+
+
+
+	public void setMinutosDuracion(int minutosDuracion) {
+		this.minutosDuracion = minutosDuracion;
+	}
+
 
 
 	@Override

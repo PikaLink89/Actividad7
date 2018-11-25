@@ -59,11 +59,4 @@ public class Espectador {
 					else
 						return "Por favor, ponga una edad correcta";
 	}		
-}	
-		
-
-
-	
-	
-	
-
+}
