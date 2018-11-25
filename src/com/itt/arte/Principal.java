@@ -36,7 +36,7 @@ public class Principal {
 						String nombre, tlf;
 						Espectador e;
 						
-						//Se comprueba que la localidad elegida esta libre;
+						//Se comprueba que la localidad elegida esta libre ;
 						//S
 						//Mientras la localidad este ocupada, le pedirá de nuevo libre sigue el proceso, sino 
 						 	
