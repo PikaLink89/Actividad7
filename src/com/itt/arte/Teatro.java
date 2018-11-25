@@ -1,8 +1,10 @@
+package com.itt.arte;
+
 /**
  * Clase Teatro.
  * 
  * Implementa la inferface de Sala y hereda de Local.
- * Asignaciones de Metdodos:
+ * Metdodos:
  * 
  * String verProgramacion();
  * String verLocalidades();
@@ -13,7 +15,6 @@
  * double calcularRecaudacion();    
  * 
  */
-package com.itt.arte;
 public class Teatro extends Local implements Sala {
 	
 	//*******************************************/
