@@ -37,26 +37,36 @@ public class Principal {
 						String nombre, tlf;
 						Espectador e;
 						
-						//Se comprueba que la localidad elegida esta libre; 
+						//Se comprueba que la localidad elegida esta libre;
+						//Se
 						//Mientras la localidad este ocupada, le pedirá de nuevo libre sigue el proceso, sino 
 						 	
-						do {
-							System.out.println("¿En qué fila quieres sentante (0-4)?");
-							fila = Integer.parseInt(lector.next());
-							System.out.println("Y en qué butaca (0-9)?");
-							butaca = Integer.parseInt(lector.next());
-						} while (teatro.consultarLocalidad(fila, butaca) != null);						
-						
-						//Si la localidad esta libre sigue el proceso 
-						System.out.println("¿Cómo se llama?");
-						nombre = lector.next();
-						System.out.println("¿Cuál es su teléfono?");
-						tlf = lector.next();
-						System.out.println("¿Qué edad tiene?");
-						edad = Integer.parseInt(lector.next());	
-						e = new Espectador(nombre, tlf, edad);
-						//teatro.venderLocalidad(fila, butaca, e);
-						System.out.println(teatro.venderLocalidad(fila, butaca, e));
+						System.out.println("¿En qué fila quieres sentante (0-4)?");
+						fila = Integer.parseInt(lector.next());
+						while ((fila < 0) || (fila > 4)) {
+							System.out.println("Debes introducir un valor entre 0 o 4, vuelve a intentarlo");
+							fila = Integer.parseInt(lector.next());								
+						}															
+						System.out.println("Y en qué butaca (0-9)?");
+						butaca = Integer.parseInt(lector.next());
+						while ((butaca < 0) || (butaca > 9)) {
+							System.out.println("Debes introducir un valor entre 0 o 9, vuelve a intentarlo");
+							butaca = Integer.parseInt(lector.next());								
+						}
+						if (teatro.consultarLocalidad(fila, butaca) !=null)
+							System.out.println("La plaza está ocupada, elige otra.\n");
+						else {
+							//Si la localidad esta libre sigue el proceso 
+							System.out.println("¿Cómo se llama?");
+							nombre = lector.next();
+							System.out.println("¿Cuál es su teléfono?");
+							tlf = lector.next();
+							System.out.println("¿Qué edad tiene?");
+							edad = Integer.parseInt(lector.next());	
+							e = new Espectador(nombre, tlf, edad);
+							//teatro.venderLocalidad(fila, butaca, e);
+							System.out.println(teatro.venderLocalidad(fila, butaca, e));
+						}
 						break;
 	   
         			case '5':
@@ -72,12 +82,15 @@ public class Principal {
         			case '6':
         				//Se hace una lecutra para consultarlocalidad
         				System.out.print("¿Fila (0-4)? ");
-        				fila = lector.nextInt();  
+        				fila = Integer.parseInt(lector.next());  
 				
         				System.out.print("¿Butaca (0-9)? ");
-        				butaca = lector.nextInt();
-        				teatro.consultarLocalidad(fila, butaca);
-        				break;
+        				butaca = Integer.parseInt(lector.next());
+						if (teatro.consultarLocalidad(fila, butaca) != null) 
+							System.out.println(teatro.consultarLocalidad(fila, butaca));
+							else 							
+								System.out.println("La plaza está libre");
+						break;
    
         			case '7':
         				//llama al método que calcular la recaudación
