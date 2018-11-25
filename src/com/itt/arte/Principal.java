@@ -43,16 +43,8 @@ public class Principal {
 						do {
 							System.out.println("¿En qué fila quieres sentante (0-4)?");
 							fila = Integer.parseInt(lector.next());
-							while ((fila < 0) || (fila > 4)) {
-								System.out.println("Debes introducir un valor entre 0 o 4, vuelve a intentarlo");
-								fila = Integer.parseInt(lector.next());								
-							}															
 							System.out.println("Y en qué butaca (0-9)?");
 							butaca = Integer.parseInt(lector.next());
-							while ((butaca < 0) || (butaca > 9)) {
-								System.out.println("Debes introducir un valor entre 0 o 9, vuelve a intentarlo");
-								butaca = Integer.parseInt(lector.next());								
-							}
 						} while (teatro.consultarLocalidad(fila, butaca) != null);						
 						
 						//Si la localidad esta libre sigue el proceso 
