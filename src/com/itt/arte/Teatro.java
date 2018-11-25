@@ -199,7 +199,7 @@ public class Teatro extends Local implements Sala {
 	 * Metodo para calcular el precio de cada espectador según su edad
 	 * 
 	 * @param e -> Tipo Objeto Espectador
-	 * @return -> Tipo double con el precio los descuentos.
+	 * @return -> Tipo double con el precio los descuentos
 	 */
 	private double precioEspectador(Espectador e) {
 		double precioEspectador;
