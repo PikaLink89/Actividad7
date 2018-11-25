@@ -110,7 +110,7 @@ public class Principal {
 		System.out.println ("TEATRO LA BOMBILLA DE DON BLAS");
 		System.out.println ("------------------------------");
 		System.out.println ("1. Ver la programación actual");
-		System.out.println ("2. Mostrar todas las localidades");
+		System.out.println ("2. Mostrar todas las localidades"); 
 		System.out.println ("3. Mostrar localidades ocupadas");
 		System.out.println ("4. Vender localidad");
 		System.out.println ("5. Cancelar localidad");
