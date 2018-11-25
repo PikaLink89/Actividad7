@@ -25,7 +25,7 @@ public class Principal {
              
             		case '3':
             			//Se muestran unicamente las ocupadas
-            			teatro.verLocalidadesOcupadas();
+            			System.out.println(teatro.verLocalidadesOcupadas());
             			break;
  
         			case '4':

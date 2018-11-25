@@ -187,7 +187,7 @@ public class Teatro extends Local implements Sala {
 	 */
 	public String verProgramacion() {
 		return "Hoy representamos "+ getObra().getTitulo() 
-				+ ", género: "+getObra().getGenero() + ", Duración: "
+				+ ", género: "+ getObra().getGenero() + ", Duración: "
 				+ getObra().getMinutosDuracion() + "\nEn "+ getDomicilio() 
 				+ ", Local de " +getMetros() + " metros, con "+ getAccesos() + " accesos\nPrecio: "+getPrecio();
 	}
