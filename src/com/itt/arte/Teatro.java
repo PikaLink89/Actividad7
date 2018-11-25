@@ -1,5 +1,5 @@
 /**
-4 * Clase Teatro.
+ * Clase Teatro.
  * 
  * Implementa la inferface de Sala y hereda de Local.
  * Asignaciones de Metdodos:
@@ -7,24 +7,25 @@
  * String verProgramacion();
  * String verLocalidades();
  * String VerLocalidadesOcupadas();
- * Juan Antonio Pavón -> Método String VenderLocalidad(int fila, int butaca, Espectador e);
+ * Método String VenderLocalidad(int fila, int butaca, Espectador e);
  * String candelarLocalidad(int fila, int butaca);
  * String consultarLocalidad(int fila, int butaca);
  * double calcularRecaudacion();    
  * 
  */
-
 package com.itt.arte;
-
-public class Teatro extends Local implements Sala  {
-	private double precio;
-	private Obra obra;
-	private Espectador localidades[][];
+public class Teatro extends Local implements Sala {
 	
-	//*******************************************************************/
-	//Constructores.
-	//*******************************************************************/
-
+	//*******************************************/
+	//	PROPIEDADES
+	//*******************************************/
+	private Obra obra;
+	private double precio;
+	private Espectador[][] localidades;
+	
+	//*******************************************/
+	//	CONSTRUCTOR
+	//*******************************************/
 	/**
 	 * Constructor de Teatro.
 	 * 
@@ -38,25 +39,53 @@ public class Teatro extends Local implements Sala  {
 		super(domicilio, metros, accesos);
 		this.obra = obra;
 		this.precio = precio;
-        this.localidades = new Espectador[5][10]; 
-
-	}	
+	    this.localidades = new Espectador[5][10]; 
 	
-	//*******************************************************************/
-	//Métodos implementados por la interface
-	//*******************************************************************/
+	}
+
+	//*******************************************/
+	//	GETTERS & SETTERS
+	//*******************************************/		
+	public Obra getObra() {
+		return obra;
+	}
+
+	public void setObra(Obra obra) {
+		this.obra = obra;
+	}
+
+	public double getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
+
+	public Espectador[][] getLocalidades() {
+		return localidades;
+	}
+
+	public void setLocalidades(Espectador[][] localidades) {
+		this.localidades = localidades;
+	}
+	
+	
+	//*********************************************/
+	//	MÉTODOS IMPLEMENTADOS POR LA INTERFACE
+	//*********************************************/
 	/**
 	 * Método para ver la programación del teatro.
 	 * @return String con la información completa de la programación.
 	 */
 	@Override
 	public String verProgramacion() {
-		return "---- HOY REPRESENTAMOS: ----\n\"" + this.obra.getTitulo().toUpperCase() + (".") +
-				"\"\nGénero: " + this.obra.getGenero() + ". Duración: " + this.obra.getMinutosDuracion() + (".") +
-				"\nDirección: " + this.getDomicilio() + ". Local de " + this.getMetros() + " metros, con " + this.getAccesos() + " accesos." + 
-				"\nPRECIO: " + this.precio + "€.\n";		
+		return "Hoy representamos "+ getObra().getTitulo() 
+				+ ", género: "+ getObra().getGenero() + ", Duración: "
+				+ getObra().getMinutosDuracion() + "\nEn "+ getDomicilio() 
+				+ ", Local de " +getMetros() + " metros, con "+ getAccesos() + " accesos\nPrecio: "+getPrecio();
 	}
-
+	
 	/**
 	 * Método para ver todas las localidades del teatro.
 	 * @return String con todas las localidades del teatro con información si esta libre o ocupada.
@@ -78,11 +107,11 @@ public class Teatro extends Local implements Sala  {
 		}		
 		return localidades.toString();
 	}
-
+		
 	/**
 	 * Metodo para ver las localidades ocupadas del teatro.
 	 * @return String con la información de todas las localidades ocupadas, con información del Espectador como
-	 * Nombre, teéfono y tio de espetador.
+	 * Nombre, teléfono y tio de espetador.
 	 */
 	@Override
 	public String verLocalidadesOcupadas() {
@@ -92,12 +121,15 @@ public class Teatro extends Local implements Sala  {
 				if (this.localidades[i][j] != null)
 					localidades = localidades.append(i + "." + j + " " + this.localidades[i][j].getNombre().toUpperCase() + ", Tlf: " + this.localidades[i][j].getTlf() + ", Tipo: " + this.localidades[i][j].rangoEdad().toUpperCase() + "\n");
 			}
-		}		
-		return localidades.toString();
+		}
+		if (localidades.toString() == "")
+			return "Todas las plazas estan libres\n";
+		else
+			return localidades.toString();
 	}
 
 	/**
-	 * Método para vender una localidad en el Teatro.	 * 
+	 * Método para vender una localidad en el Teatro.	  
 	 * @return Tipo String con un mensaje indicado la ubiación de la localidad vendida, 
 	 * a quien ha sido vendida y el precio.
 	 *   
@@ -106,38 +138,30 @@ public class Teatro extends Local implements Sala  {
 	public String venderLocalidad(int fila, int butaca, Espectador e) {		
 		this.localidades[fila][butaca] = e;
 		double precioEspectador = precioEspectador(e);
-		return "Se ha vendido la localidad " + fila + "." + butaca + " a " + e.getNombre() + " por " + precioEspectador + "€.";		
-	}
-
-	/**
-	 * Refractor.
-	 * Metodo para calcular el precio de cada espectador según su edad
-	 * 
-	 * @param e -> Tipo Objeto Espectador
-	 * @return -> Tipo double con el precio los descuentos.
-	 */
-	private double precioEspectador(Espectador e) {
-		double precioEspectador;
-		precioEspectador = (e.getEdad()<=12)?this.precio*0.50:(e.getEdad()<=17)?this.precio - (this.precio*0.20):(e.getEdad()>=65)?this.precio - (this.precio*0.66):this.precio;
-		return precioEspectador;
+		return "Se ha vendido la localidad " + fila + "." + butaca + " a " + e.getNombre() + " por " + precioEspectador + "€.\n";		
 	}
 	
 	/**
-	 * Metodo para anular una localidad en el teatro.
-	 * @return String indicando que se canzelado la reserva con el nombre del espectador.
+	 * Método para cancelar una localidad de en el teatro 
+	 * @param fila. Tipo entero con el número de la fila.
+	 * @param butaca. Tipo entero con el número de la butaca.
 	 */
 	@Override
 	public String cancelarLocalidad(int fila, int butaca) {
-		String nombre = this.localidades[fila][butaca].getNombre();		
-		this.localidades[fila][butaca] = null;
-		return nombre.toUpperCase() + "ha cancelado la reserva.";
+		if(localidades[fila][butaca] == null)
+			return "La plaza ya está libre\n\n";
+		else {
+			String nombre = localidades[fila][butaca].getNombre();
+			localidades[fila][butaca] = null;
+			return nombre.toUpperCase() + " ha cancelado su reserva\n\n";
+		}			
 	}
-
+	
 	/**
 	 * Método para consultar una localidad en contreto. Debe de recoger la fila y butaca a consultar.
 	 * 
-	 * @param fila -> Tipo entero, para recoger la fila de la localidad a consultar.
-	 * @param butaca -> Tipo entero, para recoger la butaca de la fila determinada a consultar.
+	 * @param fila. Tipo entero con el número de la fila.
+	 * @param butaca. Tipo entero con el número de la butaca.
 	 * @return String Si la localidad esta ocupada devuelte una cadena con la información, si no lo está, devuelve null.
 	 * 
 	 * <b>Nota</b>Este método tambíen se usa para en el momento de vender una localidad saber si esta ocupada, por ello el asignarle null sino lo está y
@@ -146,11 +170,11 @@ public class Teatro extends Local implements Sala  {
 	@Override
 	public String consultarLocalidad(int fila, int butaca) {
 		if (this.localidades[fila][butaca] != null)
-			return "Localidad ocupada por " + this.localidades[fila][butaca].getNombre() + ", tlf: " + this.localidades[fila][butaca].getTlf() + ", " + this.localidades[fila][butaca].rangoEdad() + " " + precioEspectador(this.localidades[fila][butaca]) + "€.";			 
+			return "Localidad ocupada por " + this.localidades[fila][butaca].getNombre() + ", tlf: " + this.localidades[fila][butaca].getTlf() + ", " + this.localidades[fila][butaca].rangoEdad() + ", Precio: " + precioEspectador(this.localidades[fila][butaca]) + "€.";			 
 		else
 			return null;
 	}
-
+	
 	/**
 	 * Método para calcular la recaudación total del Teatro
 	 * @return double con el total de la recaudación, teniendo en cuenta el tipo de espetador.
@@ -169,32 +193,20 @@ public class Teatro extends Local implements Sala  {
 		return recaudacion;
 	}
 	
-	
 	//*******************************************************************/
-	//Get & Set
+	//MÉTODOS PROPIOS
 	//*******************************************************************/
-	public double getPrecio() {
-		return precio;
-	}
-
-	public void setPrecio(double precio) {
-		this.precio = precio;
-	}
-
-	public Obra getObra() {
-		return obra;
-	}
-
-	public void setObra(Obra obra) {
-		this.obra = obra;
-	}
-
-	public Espectador[][] getLocalidades() {
-		return localidades;
-	}
-
-	public void setLocalidades(Espectador[][] localidades) {
-		this.localidades = localidades;
-	}
+	/**
+	 * Metodo para calcular el precio de cada espectador según su edad	   
+	 * 
+	 * @param e. Tipo Objeto Espectador
+	 * @return double con el precio los descuentos.
+	 * 
+	 */
+	private double precioEspectador(Espectador e) {
+		double precioEspectador;
+		precioEspectador = (e.getEdad()<=12)?this.precio*0.50:(e.getEdad()<=17)?this.precio - (this.precio*0.20):(e.getEdad()>=65)?this.precio - (this.precio*0.66):this.precio;
+		return precioEspectador;
+	}	
 
 }

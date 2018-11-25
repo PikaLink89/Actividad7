@@ -1,6 +1,6 @@
 package com.itt.arte;
 
-public class Local {
+public class Local { 
 	private String domicilio;
 	private int metros, accesos;
 	

@@ -1,5 +1,8 @@
 package com.itt.arte;
-
+/**
+ * Clase Sala, es una interface
+ * 
+ */
 public interface Sala {
 	public abstract String verProgramacion();
 	public abstract String verLocalidades();
@@ -7,5 +10,5 @@ public interface Sala {
 	public abstract String venderLocalidad(int fila, int butaca, Espectador e);
 	public abstract String cancelarLocalidad(int fila, int butaca);
 	public abstract String consultarLocalidad(int fila, int butaca);
-	public abstract double calcularRecaudacion();
+	public abstract double calcularRecaudacion(); 
 }

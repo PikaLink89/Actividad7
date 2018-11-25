@@ -96,7 +96,7 @@ private static Teatro teatro = new Teatro("C/ Sol, 45", 300, 2, obra, 30);
 									System.out.println("La plaza está libre");
 						break;
 					case '7':
-						System.out.println("Recaudación: " + teatro.calcularRecaudacion() + "€");
+						System.out.println("Recaudación: " + teatro.calcularRecaudacion() + "€"); 
 						break;
 					case '8':
 					default:
