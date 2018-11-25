@@ -74,6 +74,18 @@ public class Teatro extends Local implements Sala {
 	//*********************************************/
 	//	MÉTODOS IMPLEMENTADOS POR LA INTERFACE
 	//*********************************************/
+	/**
+	 * Método ver Programación
+	 * @return Tipo String con la información de la programación del teatro.
+	 * 
+	 */
+	@Override
+	public String verProgramacion() {
+		return "Hoy representamos "+ getObra().getTitulo() 
+				+ ", género: "+ getObra().getGenero() + ", Duración: "
+				+ getObra().getMinutosDuracion() + "\nEn "+ getDomicilio() 
+				+ ", Local de " +getMetros() + " metros, con "+ getAccesos() + " accesos\nPrecio: "+getPrecio();
+	}	
 	
 	/**
 	 * Método para ver todas las localidades del teatro.
@@ -185,18 +197,6 @@ public class Teatro extends Local implements Sala {
 	//*******************************************************************/
 	//MÉTODOS PROPIOS
 	//*******************************************************************/
-	/**
-	 * Método ver Programación
-	 * @return Tipo String con la información de la programación del teatro.
-	 * 
-	 */
-	public String verProgramacion() {
-		return "Hoy representamos "+ getObra().getTitulo() 
-				+ ", género: "+getObra().getGenero() + ", Duracción: "
-				+ getObra().getMinutosDuracion() + "\n En "+ getDomicilio() 
-				+ ", Local de " +getMetros() + " metros, con "+ getAccesos() + " accesos\n Precio: "+getPrecio() + "\n";
-	}
-	
 	/**
 	 * Metodo para calcular el precio de cada espectador según su edad	   
 	 * 
