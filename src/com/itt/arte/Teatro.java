@@ -178,9 +178,9 @@ public class Teatro extends Local implements Sala {
 		return recaudacion;
 	}
 	
-	//*******************************************************************/
+	//******************************************************************/
 	//MÉTODOS PROPIOS
-	//*******************************************************************/
+	//******************************************************************/
 	/**
 	 * Método ver Programación
 	 * @return Tipo String con la información de la programación del teatro.
