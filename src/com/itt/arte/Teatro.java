@@ -124,7 +124,7 @@ public class Teatro extends Local implements Sala {
 					localidades = localidades.append(i + "." + j + " " + this.localidades[i][j].getNombre().toUpperCase() + ", Tlf: " + this.localidades[i][j].getTlf() + ", Tipo: " + this.localidades[i][j].rangoEdad().toUpperCase() + "\n");
 			}
 		}
-		if (localidades.toString() == "")
+		if (localidades.toString().equals(""))
 			return "Todas las plazas estan libres\n";
 		else
 			return localidades.toString();
